@@ -21,6 +21,7 @@ class AppModelController: NSObject {
         static let apiGetFile = "/api/Task/GetFile"
     }
     
+    
     // MARK: - Privare Properties
     
     private var login: String = "testuser"
@@ -30,8 +31,12 @@ class AppModelController: NSObject {
     
     private func urlRequest (url: String, type: String, parameters: [String: Any]) {
         var request = URLRequest(url: URL(string: url)!) //!
-        request.httpMethod = Constansts.methodPost
-        request.httpBody = parameters.percentEscaped().data(using: .utf8)
+        let data = try? JSONSerialization.data(withJSONObject: parameters)
+        
+        request.httpMethod = type
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = data
+        
         let task = URLSession.shared.dataTask(with: request) {
             data, response, error in
             guard error == nil else {
@@ -39,7 +44,7 @@ class AppModelController: NSObject {
                 return
             }
             print(response!)
-            print(String(data: data!, encoding: .utf8))
+            print(String(data: data!, encoding: .utf8)!)
         }
         task.resume()
     }
@@ -47,10 +52,8 @@ class AppModelController: NSObject {
     // MARK: Public Methods
     
     func loginRequest () {
-        let parameters =  [
-            "username": login,
-            "password": password
-        ]
+        let parameters: [String: Any] = [ "username": login,
+                                          "password": password]
         let url = Constansts.domen + Constansts.apiLogin
         urlRequest(url: url, type: Constansts.methodPost, parameters: parameters)
     }
@@ -61,12 +64,6 @@ class AppModelController: NSObject {
         urlRequest(url: url, type: Constansts.methodGet, parameters: parameters)
     }
     
-    func getFileRequest (taskId: Int) {
-        let parameters =  [
-            "id": taskId
-        ]
-        let url = Constansts.domen + Constansts.apiLogin
-        urlRequest(url: url, type: Constansts.methodPost, parameters: parameters)
-    }
+    
 }
 
