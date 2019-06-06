@@ -24,8 +24,10 @@ class AppModelController: NSObject {
     
     // MARK: - Privare Properties
     
-    private var login: String = "testuser"
-    private var password: String = "su16"
+    // MARK: - Public Properties
+    
+    var login: String = "testuser"
+    var password: String = "su16"
     
     // MARK: - Private Methods
     

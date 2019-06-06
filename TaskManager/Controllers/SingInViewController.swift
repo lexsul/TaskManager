@@ -12,10 +12,15 @@ class SingInViewController: UIViewController {
     
     // MARK: - Private Properties
     
-    @IBOutlet weak private var LoginTextField: UITextField!
-    @IBOutlet weak private var PasswordTextField: UITextField!
     
-    @IBOutlet weak private var SingInButton: UIButton!
+    
+    @IBOutlet weak private var loginTextField: UITextField!
+    @IBOutlet weak private var passwordTextField: UITextField!
+    @IBOutlet weak private var singInButton: UIButton!
+    
+    // MARK: - Public Properties
+    
+    var appModelController: AppModelController!
     
     // MARK: - Private Methods
     
@@ -24,6 +29,9 @@ class SingInViewController: UIViewController {
     }
     
     @IBAction private func TouchSingInButton(_ sender: Any) {
+        appModelController.login = loginTextField.text ?? ""
+        appModelController.password = passwordTextField.text ?? ""
+        appModelController.loginRequest()
     }
     
     /*
