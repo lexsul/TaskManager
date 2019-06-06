@@ -12,7 +12,7 @@ class AppModelController: NSObject {
     
     // MARK: - Private Type
     
-    enum Constansts {
+    private enum Constansts {
         static let methodPost = "POST"
         static let methodGet = "GET"
         static let domen = "http://188.120.233.247:83"
@@ -24,12 +24,18 @@ class AppModelController: NSObject {
     
     // MARK: - Privare Properties
     
-    // MARK: - Public Properties
+    private var status: Bool = false
     
+    // MARK: - Public Properties
+    static let shared = AppModelController()
     var login: String = "testuser"
     var password: String = "su16"
     
     // MARK: - Private Methods
+    
+    private override init() {
+        super.init()
+    }
     
     private func urlRequest (url: String, type: String, parameters: [String: Any]) {
         var request = URLRequest(url: URL(string: url)!) //!

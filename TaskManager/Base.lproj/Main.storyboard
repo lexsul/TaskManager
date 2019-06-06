@@ -31,6 +31,7 @@
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="TouchSingInButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7Fo-J4-nlf"/>
+                                    <segue destination="m3x-hJ-bnh" kind="show" id="pbB-uE-TO6"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="emL-QV-vkH">
@@ -77,7 +78,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PHB-62-BPa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1843.125" y="111.97183098591549"/>
+            <point key="canvasLocation" x="1789" y="-281"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="18W-Jp-j6s">

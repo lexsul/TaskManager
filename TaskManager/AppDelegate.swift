@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
  
         if let navigationController = window?.rootViewController as? UINavigationController {
             if let signInViewController = navigationController.visibleViewController as? SingInViewController {
-                signInViewController.appModelController = AppModelController()
+                signInViewController.appModelController = AppModelController.shared
             }
         }
         return true
