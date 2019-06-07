@@ -80,10 +80,10 @@
             </objects>
             <point key="canvasLocation" x="1789" y="-281"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Task Table View Controller-->
         <scene sceneID="18W-Jp-j6s">
             <objects>
-                <tableViewController id="m3x-hJ-bnh" sceneMemberID="viewController">
+                <tableViewController id="m3x-hJ-bnh" customClass="TaskTableViewController" customModule="TaskManager" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="lsL-hU-QWA">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

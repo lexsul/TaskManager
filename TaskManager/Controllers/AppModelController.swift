@@ -8,9 +8,18 @@
 
 import Foundation
 
+struct Task {
+    let id: Int
+    let title: String
+    let tag: [String]
+    let dateCreate: Date
+}
+
 class AppModelController: NSObject {
     
     // MARK: - Private Type
+    
+
     
     private enum Constansts {
         static let methodPost = "POST"
@@ -32,7 +41,8 @@ class AppModelController: NSObject {
     var login: String = "testuser"
     var password: String = "su16"
     var loginStatus: [String: Any] = [:]
-    var taskList: [String: Any] = [:]
+    var taskListReq: [String: Any] = [:]
+    var taskList: [Task]
     
     // MARK: - Private Methods
     
