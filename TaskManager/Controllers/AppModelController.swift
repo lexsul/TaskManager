@@ -27,9 +27,12 @@ class AppModelController: NSObject {
     private var status: Bool = false
     
     // MARK: - Public Properties
+    
     static let shared = AppModelController()
     var login: String = "testuser"
     var password: String = "su16"
+    var loginStatus: [String: Any] = [:]
+    var taskList: [String: Any] = [:]
     
     // MARK: - Private Methods
     
@@ -37,9 +40,11 @@ class AppModelController: NSObject {
         super.init()
     }
     
-    private func urlRequest (url: String, type: String, parameters: [String: Any]) {
+    private func urlRequest (url: String, type: String, parameters: [String: Any]) -> [String: Any] {
         var request = URLRequest(url: URL(string: url)!) //!
         let data = try? JSONSerialization.data(withJSONObject: parameters)
+        var result: [String: Any] = [:]
+        let dispathGroup = DispatchGroup()
         
         request.httpMethod = type
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -51,25 +56,30 @@ class AppModelController: NSObject {
                 print(error!)
                 return
             }
-            print(response!)
-            print(String(data: data!, encoding: .utf8)!)
+            
+            guard let data = data else { return }
+            result = try! JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions()) as! [String : Any]
+            dispathGroup.leave()
         }
+        dispathGroup.enter()
         task.resume()
+        _ = dispathGroup.wait(timeout: DispatchTime(uptimeNanoseconds: 100000))
+        return result
     }
     
     // MARK: Public Methods
     
     func loginRequest () {
         let parameters: [String: Any] = [ "username": login,
-                                          "password": password]
+                                          "password": password ]
         let url = Constansts.domen + Constansts.apiLogin
-        urlRequest(url: url, type: Constansts.methodPost, parameters: parameters)
+        loginStatus = urlRequest(url: url, type: Constansts.methodPost, parameters: parameters)
     }
     
     func taskListRequest () {
         let parameters: [String: Any] = [:]
         let url = Constansts.domen + Constansts.apiTask
-        urlRequest(url: url, type: Constansts.methodGet, parameters: parameters)
+        taskList = urlRequest(url: url, type: Constansts.methodGet, parameters: parameters)
     }
     
     
