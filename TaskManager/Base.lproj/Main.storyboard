@@ -96,6 +96,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="61X-gF-RQp" kind="show" trigger="accessoryAction" id="Vvc-3K-e2X"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -108,16 +111,57 @@
             </objects>
             <point key="canvasLocation" x="2548.125" y="111.97183098591549"/>
         </scene>
-        <!--View Controller-->
+        <!--Task Info View Controller-->
         <scene sceneID="AHj-wY-p9m">
             <objects>
-                <viewController id="61X-gF-RQp" sceneMemberID="viewController">
+                <viewController id="61X-gF-RQp" customClass="TaskInfoViewController" customModule="TaskManager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5ln-HX-5GU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="m4A-2I-A7G">
+                                <rect key="frame" x="139" y="264.5" width="42" height="103"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lOe-i2-RES">
+                                        <rect key="frame" x="0.0" y="0.0" width="42" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T6j-s6-BtO">
+                                        <rect key="frame" x="0.0" y="27.5" width="42" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Opy-Zl-uIE">
+                                        <rect key="frame" x="0.0" y="55" width="42" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mha-QP-Qqi">
+                                        <rect key="frame" x="0.0" y="82.5" width="42" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="m4A-2I-A7G" firstAttribute="centerY" secondItem="8l6-ve-gIu" secondAttribute="centerY" id="9Z4-Rs-Rzt"/>
+                            <constraint firstItem="m4A-2I-A7G" firstAttribute="centerX" secondItem="8l6-ve-gIu" secondAttribute="centerX" id="DXt-pJ-84e"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="8l6-ve-gIu"/>
                     </view>
+                    <connections>
+                        <outlet property="dateCreateLabel" destination="Mha-QP-Qqi" id="8ro-CV-nm0"/>
+                        <outlet property="idLabel" destination="lOe-i2-RES" id="0v3-nI-kn4"/>
+                        <outlet property="tagLabel" destination="Opy-Zl-uIE" id="AlU-ea-Zhg"/>
+                        <outlet property="titleLabel" destination="T6j-s6-BtO" id="iiV-hH-TF4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0rd-dm-18g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
