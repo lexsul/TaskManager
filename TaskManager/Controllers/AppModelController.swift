@@ -8,18 +8,32 @@
 
 import Foundation
 
-struct Task {
+struct Task: Decodable {
     let id: Int
     let title: String
     let tag: [String]
-    let dateCreate: Date
+    let dateCreate: String
 }
 
-class AppModelController: NSObject {
+class AppModelController: NSObject, Subject{
+    
+    // MARK : Subject, Observer
+    
+    var observerCollection = NSMutableSet()
+    
+    func add(observer: PropertyObserver) {
+        observerCollection.add(observer)
+    }
+    func remove(observer: PropertyObserver) {
+        observerCollection.remove(observer)
+    }
+    func notify(withString string: String) {
+        for observer in observerCollection{
+            (observer as! PropertyObserver).didGet(newTask: string)
+        }
+    }
     
     // MARK: - Private Type
-    
-
     
     private enum Constansts {
         static let methodPost = "POST"
@@ -41,8 +55,11 @@ class AppModelController: NSObject {
     var login: String = "testuser"
     var password: String = "su16"
     var loginStatus: [String: Any] = [:]
-    var taskListReq: [String: Any] = [:]
-    var taskList: [Task]
+    var taskList: [Task]? {
+        didSet {
+            notify(withString: "taskList")
+        }
+    }
     
     // MARK: - Private Methods
     
@@ -78,7 +95,6 @@ class AppModelController: NSObject {
     }
     
     // MARK: Public Methods
-    
     func loginRequest () {
         let parameters: [String: Any] = [ "username": login,
                                           "password": password ]
@@ -87,11 +103,24 @@ class AppModelController: NSObject {
     }
     
     func taskListRequest () {
-        let parameters: [String: Any] = [:]
         let url = Constansts.domen + Constansts.apiTask
-        taskList = urlRequest(url: url, type: Constansts.methodGet, parameters: parameters)
+        var request = URLRequest(url: URL(string: url)!)
+        request.httpMethod = Constansts.methodGet
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        let task = URLSession.shared.dataTask(with: request) { [weak self]
+            data, response, error in
+            guard error == nil else {
+                print(error!)
+                return
+            }
+            guard let data = data else { return }
+            do {
+                self?.taskList = try JSONDecoder().decode([Task].self, from: data)
+            } catch {
+                print(error)
+            }
+        }
+        task.resume()
     }
-    
-    
 }
 

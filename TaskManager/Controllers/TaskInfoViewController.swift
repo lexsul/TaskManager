@@ -28,7 +28,7 @@ class TaskInfoViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        task = appModelController.taskList[taskId]
+        //task = appModelController.taskList[taskId]
         
         idLabel.text = String(task?.id ?? 0)
         titleLabel.text = task?.title ?? ""

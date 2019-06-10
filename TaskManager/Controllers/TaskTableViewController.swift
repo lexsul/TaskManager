@@ -8,29 +8,42 @@
 
 import UIKit
 
-class TaskTableViewController: UITableViewController {
+class TaskTableViewController: UITableViewController, PropertyObserver {
+    
+    // MARK: PropertyObserver
+    
+    func didGet(newTask task: String) {
+        updateTask()
+    }
     
     // MARK : Public Properties
     
-    var appModelController: AppModelController!
+    var appModelController: AppModelController! = AppModelController.shared
     
     // MARK : Private Properties
     
-    private var taskList : [Task]?
+    private var taskList : [Task]? 
  
     // MARK : Private Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        appModelController.add(observer: self)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         appModelController.taskListRequest()
-        taskList = appModelController.taskList
-        tableView.reloadData()
+        updateTask()
     }
 
+    func updateTask() {
+        taskList = appModelController.taskList
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -42,7 +55,7 @@ class TaskTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "taskCell", for: indexPath)
         cell.textLabel?.text = taskList?[indexPath.row].title
         return cell
     }
