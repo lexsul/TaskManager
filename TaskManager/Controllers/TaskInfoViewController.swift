@@ -26,13 +26,16 @@ class TaskInfoViewController: UIViewController {
 
     // MARK: - Private Methods
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        //task = appModelController.taskList[taskId]
-        
-        idLabel.text = String(task?.id ?? 0)
-        titleLabel.text = task?.title ?? ""
-        tagLabel.text = task?.tag.joined(separator: ";")
-        dateCreateLabel.text = task?.dateCreate.description
+        task = appModelController.taskList?[taskId]
+        idLabel?.text = String(task?.id ?? 0)
+        titleLabel?.text = task?.title ?? ""
+        tagLabel?.text = task?.tag.joined(separator: ";")
+        dateCreateLabel?.text = task?.dateCreate.description
     }
 }

@@ -13,6 +13,7 @@ class TaskTableViewController: UITableViewController, PropertyObserver {
     // MARK: PropertyObserver
     
     func didGet(newTask task: String) {
+        guard task == "taskList" else { return }
         updateTask()
     }
     
@@ -37,7 +38,7 @@ class TaskTableViewController: UITableViewController, PropertyObserver {
         updateTask()
     }
 
-    func updateTask() {
+    private func updateTask() {
         taskList = appModelController.taskList
         DispatchQueue.main.async {
             self.tableView.reloadData()
@@ -59,9 +60,6 @@ class TaskTableViewController: UITableViewController, PropertyObserver {
         cell.textLabel?.text = taskList?[indexPath.row].title
         return cell
     }
-    
-    
-    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let cell = sender as? UITableViewCell {

@@ -15,6 +15,20 @@ struct Task: Decodable {
     let dateCreate: String
 }
 
+struct Profile: Decodable {
+    let username: String?
+    let phone: String?
+    let email: String?
+    let fullname: String?
+    let dateOfBirth: String?
+}
+
+struct Status: Decodable {
+    let status: String
+    let data: Profile?
+    let message: String?
+}
+
 class AppModelController: NSObject, Subject{
     
     // MARK : Subject, Observer
@@ -47,14 +61,20 @@ class AppModelController: NSObject, Subject{
     
     // MARK: - Privare Properties
     
-    private var status: Bool = false
+    
     
     // MARK: - Public Properties
     
+    var pin: String?
+    
+    var status: Status? {
+        didSet {
+            notify(withString: "status")
+        }
+    }
+    
     static let shared = AppModelController()
-    var login: String = "testuser"
-    var password: String = "su16"
-    var loginStatus: [String: Any] = [:]
+    
     var taskList: [Task]? {
         didSet {
             notify(withString: "taskList")
@@ -66,40 +86,34 @@ class AppModelController: NSObject, Subject{
     private override init() {
         super.init()
     }
+
+    // MARK: Public Methods
     
-    private func urlRequest (url: String, type: String, parameters: [String: Any]) -> [String: Any] {
-        var request = URLRequest(url: URL(string: url)!) //!
-        let data = try? JSONSerialization.data(withJSONObject: parameters)
-        var result: [String: Any] = [:]
-        let dispathGroup = DispatchGroup()
+    func loginRequest (login: String, password: String) {
         
-        request.httpMethod = type
+        let parameters: [String: Any] = [ "username": login,
+                                          "password": password ]
+        let dataRequest = try? JSONSerialization.data(withJSONObject: parameters)
+        let url = Constansts.domen + Constansts.apiLogin
+        var request = URLRequest(url: URL(string: url)!)
+        request.httpMethod = Constansts.methodPost
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = data
+        request.httpBody = dataRequest
         
-        let task = URLSession.shared.dataTask(with: request) {
+        let task = URLSession.shared.dataTask(with: request) { [weak self]
             data, response, error in
             guard error == nil else {
                 print(error!)
                 return
             }
-            
             guard let data = data else { return }
-            result = try! JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions()) as! [String : Any]
-            dispathGroup.leave()
+            do {
+                self?.status = try JSONDecoder().decode(Status.self, from: data)
+            } catch {
+                print(error)
+            }
         }
-        dispathGroup.enter()
         task.resume()
-        _ = dispathGroup.wait(timeout: DispatchTime(uptimeNanoseconds: 100000))
-        return result
-    }
-    
-    // MARK: Public Methods
-    func loginRequest () {
-        let parameters: [String: Any] = [ "username": login,
-                                          "password": password ]
-        let url = Constansts.domen + Constansts.apiLogin
-        loginStatus = urlRequest(url: url, type: Constansts.methodPost, parameters: parameters)
     }
     
     func taskListRequest () {

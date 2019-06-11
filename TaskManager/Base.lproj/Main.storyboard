@@ -31,11 +31,17 @@
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="TouchSingInButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7Fo-J4-nlf"/>
-                                    <segue destination="m3x-hJ-bnh" kind="show" id="pbB-uE-TO6"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="emL-QV-vkH">
                                 <rect key="frame" x="112" y="136" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mOU-NE-bhN">
+                                <rect key="frame" x="112" y="92" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -50,35 +56,12 @@
                         <outlet property="LoginTextField" destination="emL-QV-vkH" id="lbG-BP-RCW"/>
                         <outlet property="PasswordTextField" destination="1Zo-0E-zFo" id="UbA-J3-Pnn"/>
                         <outlet property="SingInButton" destination="N7m-bU-fhJ" id="ige-wx-NSd"/>
+                        <outlet property="pinTextField" destination="mOU-NE-bhN" id="80e-LJ-e6n"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1081.875" y="111.97183098591549"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="rHZ-EY-1Nt">
-            <objects>
-                <viewController id="BN6-rS-6qp" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="d9j-Ej-gvw">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cUE-C1-iaW">
-                                <rect key="frame" x="112" y="90" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="frA-a6-E6J"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="PHB-62-BPa" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1789" y="-281"/>
+            <point key="canvasLocation" x="1018" y="-312"/>
         </scene>
         <!--Task Table View Controller-->
         <scene sceneID="18W-Jp-j6s">
@@ -89,15 +72,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="taskCell" id="sXy-y7-q5o">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="taskCell" id="sXy-y7-q5o">
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sXy-y7-q5o" id="bD7-kx-1cP">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="286" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="61X-gF-RQp" kind="show" trigger="accessoryAction" id="Vvc-3K-e2X"/>
+                                    <segue destination="61X-gF-RQp" kind="show" id="K6Z-kc-9qe"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -106,10 +89,11 @@
                             <outlet property="delegate" destination="m3x-hJ-bnh" id="mLS-by-AJV"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="YcK-Yg-ofe"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sju-x0-Pyj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2548.125" y="111.97183098591549"/>
+            <point key="canvasLocation" x="1823" y="481"/>
         </scene>
         <!--Task Info View Controller-->
         <scene sceneID="AHj-wY-p9m">
@@ -120,7 +104,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="m4A-2I-A7G">
-                                <rect key="frame" x="139" y="264.5" width="42" height="103"/>
+                                <rect key="frame" x="139" y="242.5" width="42" height="103"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lOe-i2-RES">
                                         <rect key="frame" x="0.0" y="0.0" width="42" height="20.5"/>
@@ -156,6 +140,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8l6-ve-gIu"/>
                     </view>
+                    <navigationItem key="navigationItem" id="8Vs-RU-AHV"/>
                     <connections>
                         <outlet property="dateCreateLabel" destination="Mha-QP-Qqi" id="8ro-CV-nm0"/>
                         <outlet property="idLabel" destination="lOe-i2-RES" id="0v3-nI-kn4"/>
@@ -165,7 +150,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0rd-dm-18g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3241.875" y="119.36619718309859"/>
+            <point key="canvasLocation" x="2803" y="-313"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0Um-Ve-bVr">
@@ -179,11 +164,12 @@
                     <nil name="viewControllers"/>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="JVT-j7-jMV"/>
+                        <segue destination="m3x-hJ-bnh" kind="show" identifier="taskListSegue" id="Pg6-eQ-4Tk"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gK9-fg-GbS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="84.375" y="111.97183098591549"/>
+            <point key="canvasLocation" x="-66" y="-313"/>
         </scene>
     </scenes>
 </document>

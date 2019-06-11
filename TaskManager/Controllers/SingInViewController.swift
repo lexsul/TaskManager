@@ -8,15 +8,20 @@
 
 import UIKit
 
-class SingInViewController: UIViewController {
+class SingInViewController: UIViewController, PropertyObserver {
     
+    func didGet(newTask task: String) {
+        guard task == "status" else { return }
+        signIn()
+    }
     // MARK: - Private Properties
-    
-    
     
     @IBOutlet weak private var loginTextField: UITextField!
     @IBOutlet weak private var passwordTextField: UITextField!
     @IBOutlet weak private var singInButton: UIButton!
+    @IBOutlet weak private var pinTextField: UITextField!
+    
+    var alertController: UIAlertController?
     
     // MARK: - Public Properties
     
@@ -26,14 +31,50 @@ class SingInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        alertControllerSetup()
+        appModelController.add(observer: self)
     }
     
     @IBAction private func TouchSingInButton(_ sender: Any) {
-        appModelController.login = loginTextField.text ?? ""
-        appModelController.password = passwordTextField.text ?? ""
-        appModelController.loginRequest()
+  
+        let login = loginTextField.text ?? ""
+        let password = passwordTextField.text ?? ""
+        appModelController.loginRequest(login: login, password: password)
     }
     
+    private func signIn() {
+        let status = appModelController.status?.status
+        guard status == "ok" else { return }
+        
+        DispatchQueue.main.async {
+            if self.appModelController.pin == nil {
+                self.present(self.alertController!, animated: true , completion: nil)
+            }
+            let taskTableViewController = TaskTableViewController()
+            taskTableViewController.appModelController = self.appModelController
+            self.addChild(taskTableViewController)
+            self.navigationController?.performSegue(withIdentifier: "taskListSegue", sender: Any?.self)
+        }
+    }
+    
+    private func alertControllerSetup() {
+        alertController = UIAlertController(title: "PIN", message: "Insert Pin!", preferredStyle: .alert)
+        alertController?.addTextField { textField in
+            textField.placeholder = "PIN"
+            textField.isSecureTextEntry = true
+        }
+        let okAction = UIAlertAction(title: "OK", style: .default) { [weak alertController] _ in
+            guard
+                let alertController = alertController,
+                let textField = alertController.textFields?.first
+                else {return}
+         self.appModelController.pin = textField.text
+        }
+        
+        let canselAction = UIAlertAction(title: "cansel", style: .cancel, handler: nil)
+        alertController?.addAction(okAction)
+        alertController?.addAction(canselAction)
+    }
     /*
     // MARK: - Navigation
 
