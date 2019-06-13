@@ -7,21 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA117AE222A8E1BC00D5246E /* SingInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA117AE122A8E1BC00D5246E /* SingInViewController.swift */; };
+		FA117AE422A8E43200D5246E /* AppModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA117AE322A8E43200D5246E /* AppModelController.swift */; };
+		FA117AE722A8F80800D5246E /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA117AE622A8F80800D5246E /* DictionaryExtension.swift */; };
+		FA117AE922AA4B7B00D5246E /* TaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA117AE822AA4B7B00D5246E /* TaskTableViewController.swift */; };
+		FA117AEB22AA52C100D5246E /* TaskInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA117AEA22AA52C100D5246E /* TaskInfoViewController.swift */; };
 		FA3C9B4422A8D22900D35783 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3C9B4322A8D22900D35783 /* AppDelegate.swift */; };
-		FA3C9B4622A8D22900D35783 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3C9B4522A8D22900D35783 /* ViewController.swift */; };
 		FA3C9B4922A8D22900D35783 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA3C9B4722A8D22900D35783 /* Main.storyboard */; };
 		FA3C9B4B22A8D22D00D35783 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA3C9B4A22A8D22D00D35783 /* Assets.xcassets */; };
 		FA3C9B4E22A8D22D00D35783 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA3C9B4C22A8D22D00D35783 /* LaunchScreen.storyboard */; };
+		FAC93DC822AEE3600030FB36 /* observe.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC93DC722AEE3600030FB36 /* observe.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA117AE122A8E1BC00D5246E /* SingInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingInViewController.swift; sourceTree = "<group>"; };
+		FA117AE322A8E43200D5246E /* AppModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModelController.swift; sourceTree = "<group>"; };
+		FA117AE622A8F80800D5246E /* DictionaryExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryExtension.swift; sourceTree = "<group>"; };
+		FA117AE822AA4B7B00D5246E /* TaskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewController.swift; sourceTree = "<group>"; };
+		FA117AEA22AA52C100D5246E /* TaskInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInfoViewController.swift; sourceTree = "<group>"; };
 		FA3C9B4022A8D22900D35783 /* TaskManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA3C9B4322A8D22900D35783 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FA3C9B4522A8D22900D35783 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FA3C9B4822A8D22900D35783 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FA3C9B4A22A8D22D00D35783 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA3C9B4D22A8D22D00D35783 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA3C9B4F22A8D22D00D35783 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAC93DC722AEE3600030FB36 /* observe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = observe.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +45,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA117AE522A8F7DB00D5246E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FA117AE622A8F80800D5246E /* DictionaryExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		FA3C9B3722A8D22800D35783 = {
 			isa = PBXGroup;
 			children = (
@@ -54,14 +72,35 @@
 		FA3C9B4222A8D22900D35783 /* TaskManager */ = {
 			isa = PBXGroup;
 			children = (
+				FAC93DC622AEE3340030FB36 /* New Group */,
+				FA117AE522A8F7DB00D5246E /* Extensions */,
+				FA3C9B5522A8DC3B00D35783 /* Controllers */,
 				FA3C9B4322A8D22900D35783 /* AppDelegate.swift */,
-				FA3C9B4522A8D22900D35783 /* ViewController.swift */,
 				FA3C9B4722A8D22900D35783 /* Main.storyboard */,
 				FA3C9B4A22A8D22D00D35783 /* Assets.xcassets */,
 				FA3C9B4C22A8D22D00D35783 /* LaunchScreen.storyboard */,
 				FA3C9B4F22A8D22D00D35783 /* Info.plist */,
 			);
 			path = TaskManager;
+			sourceTree = "<group>";
+		};
+		FA3C9B5522A8DC3B00D35783 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FA117AE122A8E1BC00D5246E /* SingInViewController.swift */,
+				FA117AE322A8E43200D5246E /* AppModelController.swift */,
+				FA117AE822AA4B7B00D5246E /* TaskTableViewController.swift */,
+				FA117AEA22AA52C100D5246E /* TaskInfoViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		FAC93DC622AEE3340030FB36 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				FAC93DC722AEE3600030FB36 /* observe.swift */,
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,7 +174,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA3C9B4622A8D22900D35783 /* ViewController.swift in Sources */,
+				FA117AE922AA4B7B00D5246E /* TaskTableViewController.swift in Sources */,
+				FA117AEB22AA52C100D5246E /* TaskInfoViewController.swift in Sources */,
+				FA117AE222A8E1BC00D5246E /* SingInViewController.swift in Sources */,
+				FA117AE422A8E43200D5246E /* AppModelController.swift in Sources */,
+				FA117AE722A8F80800D5246E /* DictionaryExtension.swift in Sources */,
+				FAC93DC822AEE3600030FB36 /* observe.swift in Sources */,
 				FA3C9B4422A8D22900D35783 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
