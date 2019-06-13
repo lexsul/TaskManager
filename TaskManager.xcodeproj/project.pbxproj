@@ -16,7 +16,7 @@
 		FA3C9B4922A8D22900D35783 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA3C9B4722A8D22900D35783 /* Main.storyboard */; };
 		FA3C9B4B22A8D22D00D35783 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA3C9B4A22A8D22D00D35783 /* Assets.xcassets */; };
 		FA3C9B4E22A8D22D00D35783 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA3C9B4C22A8D22D00D35783 /* LaunchScreen.storyboard */; };
-		FAC93DC822AEE3600030FB36 /* observe.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC93DC722AEE3600030FB36 /* observe.swift */; };
+		FAC93DC822AEE3600030FB36 /* Observe.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC93DC722AEE3600030FB36 /* Observe.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,7 +31,7 @@
 		FA3C9B4A22A8D22D00D35783 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA3C9B4D22A8D22D00D35783 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA3C9B4F22A8D22D00D35783 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FAC93DC722AEE3600030FB36 /* observe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = observe.swift; sourceTree = "<group>"; };
+		FAC93DC722AEE3600030FB36 /* Observe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observe.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +72,7 @@
 		FA3C9B4222A8D22900D35783 /* TaskManager */ = {
 			isa = PBXGroup;
 			children = (
-				FAC93DC622AEE3340030FB36 /* New Group */,
+				FAC93DC622AEE3340030FB36 /* Protocols */,
 				FA117AE522A8F7DB00D5246E /* Extensions */,
 				FA3C9B5522A8DC3B00D35783 /* Controllers */,
 				FA3C9B4322A8D22900D35783 /* AppDelegate.swift */,
@@ -95,12 +95,12 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		FAC93DC622AEE3340030FB36 /* New Group */ = {
+		FAC93DC622AEE3340030FB36 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				FAC93DC722AEE3600030FB36 /* observe.swift */,
+				FAC93DC722AEE3600030FB36 /* Observe.swift */,
 			);
-			path = "New Group";
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,7 +179,7 @@
 				FA117AE222A8E1BC00D5246E /* SingInViewController.swift in Sources */,
 				FA117AE422A8E43200D5246E /* AppModelController.swift in Sources */,
 				FA117AE722A8F80800D5246E /* DictionaryExtension.swift in Sources */,
-				FAC93DC822AEE3600030FB36 /* observe.swift in Sources */,
+				FAC93DC822AEE3600030FB36 /* Observe.swift in Sources */,
 				FA3C9B4422A8D22900D35783 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
