@@ -23,7 +23,8 @@ class TaskInfoViewController: UIViewController {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var tagLabel: UILabel!
     @IBOutlet private weak var dateCreateLabel: UILabel!
-
+    @IBOutlet private weak var getFileButton: UIButton!
+    
     // MARK: - Private Methods
     
     override func viewDidLoad() {
@@ -37,5 +38,9 @@ class TaskInfoViewController: UIViewController {
         titleLabel?.text = task?.title ?? ""
         tagLabel?.text = task?.tag.joined(separator: ";")
         dateCreateLabel?.text = task?.dateCreate.description
+    }
+    
+    @IBAction func touchGetFileButton(_ sender: Any) {
+        appModelController.getFile(id: taskId)
     }
 }

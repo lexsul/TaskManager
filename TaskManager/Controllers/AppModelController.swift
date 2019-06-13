@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Task: Decodable {
     let id: Int
@@ -132,6 +133,32 @@ class AppModelController: NSObject, Subject{
                 self?.taskList = try JSONDecoder().decode([Task].self, from: data)
             } catch {
                 print(error)
+            }
+        }
+        task.resume()
+    }
+    
+    func getFile(id: Int) {
+        let parameters: [String: Any] = [ "id": id]
+        let dataRequest = try? JSONSerialization.data(withJSONObject: parameters)
+        let url = Constansts.domen + Constansts.apiGetFile
+        var request = URLRequest(url: URL(string: url)!)
+        request.httpMethod = Constansts.methodPost
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = dataRequest
+        
+        let task = URLSession.shared.dataTask(with: request) { [weak self]
+            data, response, error in
+            guard error == nil else {
+                print(error!)
+                return
+            }
+            guard let data = data else { return }
+            let dataDecode = Data(base64Encoded: data)
+            
+            guard let image = UIImage(data: dataDecode!) else { return }
+            DispatchQueue.main.async {
+                UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
             }
         }
         task.resume()
